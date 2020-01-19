@@ -58,7 +58,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="base_user">
+        <table tableName="tweet">
             <!-- <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
         </table>
     </context>

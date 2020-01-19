@@ -74,7 +74,7 @@ public class PaginationPlugin extends PluginAdapter {
         //interfaze.addImportedType(new FullyQualifiedJavaType("com.beaulog.mybatis.mapper.BaseMapper"));
         // add base mapper
         interfaze.addSuperInterface(new FullyQualifiedJavaType("SqlMapper"));
-        interfaze.addImportedType(new FullyQualifiedJavaType("com.chainup.common.dao.SqlMapper"));
+        interfaze.addImportedType(new FullyQualifiedJavaType("org.lili.common.dao.SqlMapper"));
         return super.clientGenerated(interfaze, topLevelClass, introspectedTable);
     }
 
