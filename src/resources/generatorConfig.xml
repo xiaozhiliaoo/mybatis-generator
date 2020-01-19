@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<!-- 注意jar包所在的位置, 生成的sql文件注意修改 -->
+<generatorConfiguration>
+    <properties resource="path.properties"/>
+    <context id="mysqlTables" targetRuntime="MyBatis3">
+        <!-- page plugin -->
+        <plugin type="cn.belink.mybatis.plugin.PaginationPlugin"/>
+        <!-- jsr 303 validate annotation plugin -->
+        <!--<plugin type="cn.belink.mybatis.plugin.JSR303Plugin"/>-->
+        <!-- serializable plugin -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" /> <property name="replaceString"
+            value="Criteria" /> </plugin> -->
+
+        <plugin type="com.google.code.mybatis.generator.plugins.ModelBuilderPlugin">
+            <property name="builderClassName" value="Builder"/>
+            <!-- <property name="excludeClassNamesRegexp" value="com.*Blog"/> -->
+        </plugin>
+        <plugin type="com.google.code.mybatis.generator.plugins.SelectOneByExamplePlugin">
+            <property name="methodToGenerate" value="selectOnlyOneByExample"/>
+            <!-- <property name="excludeClassNamesRegexp" value="com.*BlogMapper"/> -->
+        </plugin>
+        <plugin type="com.google.code.mybatis.generator.plugins.CriteriaBuilderPlugin"/>
+
+        <commentGenerator type="cn.belink.mybatis.generator.MyCommentGenerator">
+            <!-- is enabled comment message -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- add generator date -->
+            <property name="suppressDate" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="${jdbc.driverClassName}" connectionURL="${jdbc.url}"
+                        userId="${jdbc.username}" password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="${model.baseDir}"
+                            targetProject="${model.targetProject}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="${mapper.baseDir}"
+                         targetProject="${sqlmap.targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${interface.baseDir}" targetProject="${mapper.targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="base_user">
+            <!-- <generatedKey column="id" sqlStatement="MySql" identity="true"/> -->
+        </table>
+    </context>
+</generatorConfiguration>
